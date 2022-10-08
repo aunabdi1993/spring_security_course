@@ -33,6 +33,7 @@ public class ApplicationSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeHttpRequests()
                 .antMatchers("/", "index","/css/*", "/js/*").permitAll()
                 .antMatchers("/api/**").hasRole(STUDENT.name())
@@ -43,8 +44,7 @@ public class ApplicationSecurityConfig {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .csrf()
-                .csrfTokenRepository(new CookieCsrfTokenRepository());
+                .httpBasic();
         return http.build();
     }
 
