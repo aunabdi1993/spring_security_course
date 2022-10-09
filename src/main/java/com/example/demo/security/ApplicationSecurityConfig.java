@@ -45,7 +45,7 @@ public class ApplicationSecurityConfig {
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login");
+                .loginPage("/login").permitAll();
         return http.build();
     }
 
