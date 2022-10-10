@@ -17,6 +17,11 @@ public class TemplateController {
     public String getCourses() {
         return "courses";
     }
+
+    @GetMapping("signup")
+    public String getSignupView() {
+        return "signup";
+    }
     
 
 }
